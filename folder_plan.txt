@@ -1,0 +1,52 @@
+DSR_PRO_V2/                  <-- ROOT PROJECT FOLDER
+│
+├── main.py                  <-- Entry Point (Run this to start App)
+├── requirements.txt         <-- Library Dependencies (PySide6, etc.)
+│
+├── ui/                      <-- "THE FACE" (Frontend)
+│   ├── __init__.py
+│   ├── mainwindow.py        <-- Main Window Shell (Sidebar + Content)
+│   └── styles.py            <-- "Gold & Black" Theme Definitions
+│
+├── core/                    <-- "THE BRAIN" (Backend - Copy Old Files Here)
+│   ├── __init__.py
+│   ├── database_manager.py  <-- (You will copy this)
+│   └── ai_processor.py      <-- (You will copy this)
+│
+├── assets/                  <-- Images, Icons, Logos
+│
+├── database/                <-- SQLite File Storage
+│
+└── snapshot/                <-- "THE RECORDER" (New Management Module)
+    ├── backups/             <-- Zipped Archives (Auto-Generated)
+    │   └── DSR_PRO_Backup_2026-01-28_11-30.zip
+    │
+    ├── reports/             <-- C-Suite Documentation
+    │   └── EXECUTIVE_STATUS.md  <-- Live Status for CEO/CTO
+    │
+    └── scripts/             <-- Automation Tools
+        └── backup_manager.py    <-- Double-click to run Backup
+
+=======================
+
+DSR_PRO_V2/
+├── core/
+│   ├── burst_analyzer.py        # Logic: Finds bursts and identifies "Best-of-Burst"
+│   ├── vector_engine.py         # Logic: Handles image embeddings for "Inch-by-Inch" similarity
+│   ├── database_sync.py         # Logic: Background thread to update SQL with AI results
+│   └── pipeline_manager.py      # Logic: Orchestrates the flow from Import -> AI -> UI
+
+=====================
+
+DSR_PRO_V2/
+├── core/
+│   ├── ai_engine.py                 # Perception engine (MediaPipe + ResNet)
+│   ├── engine_to_brain_adapter.py   # Signal normalization
+│   ├── ai_logic.py                  # Brain Logic v1.0 (decisions)
+│   ├── burst_analyzer.py            # Burst intelligence v1.2
+│   ├── test_pipeline.py             # Single image pipeline test
+│   ├── validate_brain_v1.py         # Human sanity validation
+│   └── test_burst_grouping.py       # Burst collapse test
+│
+├── burst_test/                      # One real wedding burst
+└── test_images/                     # 10–20 mixed validation images

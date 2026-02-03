@@ -1,0 +1,49 @@
+=== LAYOUT TODO LIST ===
+[ ] GALLERY: Update GridCard to show "Stack Badge" if 'burst_count' > 1.
+[ ] GALLERY: Update rebuild_grid() to filter out 'is_duplicate' images when in 'ALL' mode.
+[ ] DASHBOARD: Add "Magic Analyze" progress bar to show Burst Grouping status.
+[ ] SIDEBAR: Add a "Show Hidden Duplicates" toggle switch.
+[ ] MAIN_WINDOW: Initialize QThreadPool for the TitaniumWorker.
+[ ] MAIN_WINDOW: Connect 'WorkerSignals.result' to a function that updates the GridCard color live.
+[ ] MAIN_WINDOW: Connect 'WorkerSignals.progress' to the Top Bar progress bar.
+[ ] TOOLBAR: Change "Analyze Magic" button to "Cancel" when the worker is running.
+[ ] SIDEBAR: Add an 'Album Target' input field (numeric) to set the goal (default 100).
+[ ] BOTTOM_BAR: Add a 'Progress Label' showing "Album: 45 / 100 Selected".
+[ ] UI_LOGIC: If 'Keep' count exceeds target, turn the Progress Label RED as a warning.
+[ ] UI_LOGIC: If 'Keep' count hits target exactly, add a "Goal Reached" gold glow effect.
+[ ] UI_GALLERY: Create an instance of 'AlbumTracker' in the GalleryView.
+[ ] BOTTOM_BAR: Connect the 'update_album_stats' function to call 'tracker.calculate_progress'.
+[ ] UI_VISUALS: If 'is_over' is True, change the Album Label text color to #E06C75 (Warning Red).
+[ ] UI_VISUALS: If 'percent' hits 100, trigger a 'Goal Reached' notification or badge.[ ] GRID_CARD: Add a 'Crown Icon' badge (👑) if the image contains a VVIP.
+[ ] GRID_CARD: Add a 'Star Icon' badge (⭐) if the image contains a VIP.
+[ ] GALLERY_VIEW: Add a 'Face Filter' to show only images containing designated VVIPs.
+[ ] ZEN_MODE: Display 'Detected Faces' metadata in a small overlay when inspecting a photo.
+[ ] GRID_CARD: Display a small horizontal list of hashtags (e.g., #HappyFace) at the bottom.
+[ ] SIDEBAR: Add a "Smart Search" bar that filters the grid as the user types hashtags.
+[ ] UI_VISUALS: Make #EyesClosed tags appear in a subtle red color to warn the user.
+
+[ ] ZEN_MODE: Add a right-click option on a face: "Find all photos of this person".
+[ ] SIDEBAR: Add a "VVIP Collection" area that shows the Top 5 most frequent faces.
+[ ] UI_GALLERY: When a search is active, dim all non-matching image cards.
+
+[ ] UI_GLOBAL: Add Ctrl+Z hotkey to trigger 'SafetyNet.pop_undo()'.
+[ ] UI_GLOBAL: Add a 'Gold Undo Toast' notification when an action is reverted.
+[ ] SETTINGS: Add a "Compact Database" button that triggers 'MemoryOptimizer.purge_raw_embeddings()'.
+[ ] FOOTER: Display current DB size (e.g., "Memory: 450MB / Optimized").
+
+[ ] PROJECT_LOAD: Check for .dsr_cache before starting a fresh scan.
+[ ] UI_GALLERY: If user manually changes status to 'Keep', call 'ai_learning.record_override(False)'.
+[ ] SETTINGS: Add a "Reset AI Learning" button to clear user-preference bias.
+
+[ ] IMPORT_DIALOG: Allow user to select multiple folders at once.
+[ ] UI_GALLERY: Add a "Source" column or tag (e.g., "SD_CARD_1") to the image cards.
+[ ] UI_TIMELINE: Ensure the jump-to-date feature works across the unified list.
+
+
+-------------
+Step,Feature,Industrial Benefit
+1,The Logic Harmonizer,"Merges face_priority into ai_logic. If a VVIP is detected, the ""Reject"" becomes ""Pending""."
+2,The Metadata Ticker,Logic for auto-tagging images with hashtags like #EyesClosed or #MotionBlur for the database.
+3,The Intelligent Search,Logic to find specific people across 30k images using the embeddings we've saved.
+4,"The ""Safety Net"" Undo","Logic to store ""Previous State"" in the database so bulk actions can be reverted."
+5,The Memory Optimizer,"Logic to ""forget"" raw embeddings once the analysis is done to keep the DB size small."

@@ -1,0 +1,127 @@
+✅ Import Repair: The Dashboard is now correctly wired.
+⭐ Star Ratings (1-5): Press keys 1 through 5 to rate an image. The rating is saved to the database.
+📏 Dynamic Grid Scaling: Press Ctrl + to zoom in (fewer columns) or Ctrl - to zoom out (more columns) on the Grid.
+🌟 Visual Indicators: Grid cards now show gold stars if rated.
+🗑️ Trash Rejects: A new button in the Export Studio to Move Rejects to a _TRASH folder (Safe Deletion).
+⚡ "Delete" Key Mapping: The Del key now works as an alias for X (Reject), matching standard OS behavior.
+🎨 Color Labels (Keys 6-9): You can now tag photos with Red, Yellow, Green, Blue labels.
+🗂️ Range Selection (Shift+Click): Hold Shift to select a whole group of photos in the Grid.
+⚡ Bulk Actions: If you have 50 photos selected, pressing X or 5 applies the rating to ALL of them instantly.
+🔃 Sorting Engine: New dropdown to sort by Filename, Rating, or Status.
+⌨️ Pro Hotkeys: Added Industry Standards: G (Grid), E (Zen/Loupe), L (Lights Out / Hide UI).
+📂 Context Menu: Right-click any photo to "Reveal in Explorer" or Copy Path.
+⏭️ Auto-Advance Toggle: A new switch in the toolbar to turn off "Jump to next after tag" if you prefer staying put.
+🔦 "Lights Out" Mode: Press L to dim the interface and focus only on the photo.
+⭐ Advanced Filtering: You can now filter specifically by Star Rating (e.g., ">= 3 Stars").
+🎞️ Filmstrip Sync: The bottom filmstrip in Zen Mode now auto-scrolls to keep the active photo centered.
+
+
+not tested , cross chek once and give update file for all above .
+and give details of what to test
+
+____
+
+It is important to have a clear roadmap before finalizing this phase of development. Below is the comprehensive breakdown of the UI features discussed, the functionalities currently live in your codebase, and the advanced logic planned for the next iteration.
+
+1. UI Features Discussed for Update
+These were the conceptual requirements we aimed to integrate to transform the app into a "Billionaire's Tool":
+
+Executive Dashboard: A landing page that remembers recent folders and shows project progress without re-importing.
+
+Mathematical Grid Alignment: A perfectly symmetrical layout that adapts to different column counts (3, 5, 8, etc.) without "jagged" edges.
+
+Luxury Visual Feedback: Gold high-contrast borders for selection, rounded corners, and a dark-mode "Cinematic" aesthetic.
+
+Precision Zoom Viewer: A high-performance graphics engine for Zen mode that supports fluid mouse-wheel zooming and click-drag panning.
+
+Filmstrip Navigation: A continuous strip of thumbnails at the bottom of the Zen view for contextual navigation.
+
+Dynamic Settings Interface: A dedicated preferences window to toggle advanced behaviors like Dynamic Grid vs. Locked 5x5.
+
+2. Features Currently Updated & Live
+The current code you possess includes the following 18 core logics:
+
+✅ Intelligent Dashboard: Successfully lists recent projects with "One-Click Resume" capability.
+
+✅ 1-5 Star Rating: Numeric keys 1 through 5 apply star ratings instantly to the database.
+
+✅ 6-9 Color Labels: Keys 6 through 9 apply Red, Yellow, Green, and Blue background tints.
+
+✅ Shift+Click Multi-Select: Allows selecting massive ranges of photos for bulk tagging.
+
+✅ Bulk Action Processing: Applying a rating or label while multiple photos are selected updates all of them at once.
+
+✅ Mathematical Grid Fix: Uses setColumnStretch to ensure columns are identical in width regardless of window size.
+
+✅ Auto-Next Logic: Automatically jumps to the next image after a rating is applied (optional toggle).
+
+✅ Industry Hotkeys: G for Grid, E for Zen (Loupe), and L for Lights Out mode.
+
+✅ Lights Out Mode: A distraction-free overlay for critical image inspection.
+
+✅ Trash Engine: A dedicated button in the Export Studio to move "Rejects" into a safe _TRASH subfolder.
+
+✅ Advanced Filtering: Filter the view by status (Keep/Reject) or by "★ Rated" only.
+
+✅ Sorting Engine: Dropdown to sort by Filename, Date Modified, or Rating.
+
+✅ Context Menu: Right-click functionality to "Reveal in Explorer."
+
+✅ Database Persistence: All settings, ratings, and color tags are saved permanently in dsr_pro_data.db.
+
+✅ Filmstrip Sync: The filmstrip highlights and scrolls to the active image in Zen mode.
+
+✅ Dynamic Grid Zoom: Ctrl + + and Ctrl + - to change column counts on the fly.
+
+✅ Double-Click Navigation: Double-click Grid to enter Zen; double-click Zen to return to Grid.
+
+✅ High-Res Zoom Viewer: Zen mode now uses a QGraphicsView engine for smooth scaling.
+
+3. Next Plan Logics (The "AI" Phase)
+Now that the Manual Pro-Suite is complete, our next focus is the "Intelligence" layer:
+
+Logic A: AI Grouping (Similarity): Automatically clustering photos taken in the same "burst" (e.g., 5 similar wedding poses) so you only see the best one.
+
+Logic B: Face Focus Detection: Automatically zooming into the primary face in Zen mode to check if eyes are open or closed without manual zooming.
+
+Logic C: Blur/Sharpness Scoring: An AI-calculated score that marks photos as "Soft" or "Sharp" to help you reject out-of-focus shots instantly.
+
+Logic D: Duplicate Identification: Spotting exact or near-exact duplicates and suggesting which one to keep based on technical quality.
+
+Logic E: Advanced Exporting: Options to export "Keeps" into subfolders based on their Star Rating or Color Label.
+
+Logic F: Multi-Folder Merging: The ability to view multiple imported folders as one single timeline project.
+
+Would you like to begin the AI Grouping logic, or should we refine any specific part of the current Manual UI first?
+
+----------------------------------
+
+---------------------------------
+I have used a QStackedWidget as the master container to ensure a hard separation between these two environments.
+
+1. Grid Selection Mode (The "Culling Hub")
+Logic: This mode uses a QGridLayout locked to a 4x4 formation to allow the client to scan 16 images at once.
+
+Purpose: It is designed for high-speed "first-pass" sorting where the client can use Shift+Click range selection and bulk hotkeys to categorize large batches.
+
+Visuals: Each card features a Kinetic Hover Lift and Gold Accents to provide tactile feedback while browsing.
+
+2. Full Image Mode (The "Zen Filmy Strip")
+Logic: This mode switches the logic to a QGraphicsView engine for high-performance rendering.
+
+The Filmy Strip: A secondary QHBoxLayout logic is activated at the bottom, creating a horizontal "strip" of thumbnails that move right-to-left as the client navigates.
+
+Interactive Zoom: The logic here shifts from "selection" to "inspection," enabling mouse-wheel precision zooming to check details like eye focus or smiles.
+
+The "Billionaire Comfort" Switch
+The client can glide between these two modes instantly using the global hotkeys we established:
+
+Press E: Instantly dives into the Full Image Mode for a closer look.
+
+Press G: Instantly pulls back to the Grid Mode to continue the broad selection.
+
+Double-Click: This is the "natural" shortcut—double-clicking any grid image opens it in Full View.
+
+This dual-logic structure ensures that whether the client wants to see the "big picture" or the "fine detail," the application responds with the appropriate specialized interfac
+
+------------------------------------
